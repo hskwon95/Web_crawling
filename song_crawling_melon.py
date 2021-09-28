@@ -45,10 +45,3 @@ for y_i in year_list:
     df.to_excel(str(y_i) + "_melon_TOP30.xlsx", encoding='utf-8')
 
     print(str(y_i)+"year done.")
-
-
-
-
-
-
-

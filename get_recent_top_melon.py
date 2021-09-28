@@ -2,7 +2,6 @@
 from selenium import webdriver
 import pandas as pd
 
-
 driver = webdriver.Chrome('./chromedriver.exe')
 driver.get("https://www.melon.com/chart/index.htm")
 title=driver.find_elements_by_class_name('ellipsis.rank01')
