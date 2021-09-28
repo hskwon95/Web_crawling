@@ -4,10 +4,10 @@ import pandas as pd
 
 driver = webdriver.Chrome('./chromedriver.exe')
 year_list=[]
-for i in range(1980,2021): #추출할 연도
+for i in range(1980,2021):#range of the year to be extracted
     year_list.append(i)
 
-how_many = 30  # 몇 개의 곡 뽑을껀지
+how_many = 30 #how many song to get
 for y_i in year_list:
 
     web_url="https://www.melon.com/chart/age/index.htm?chartType=YE&chartGenre=KPOP&chartDate="+str(y_i)
@@ -29,7 +29,7 @@ for y_i in year_list:
 
     number = []
     for i in songTagList:
-        get_id=((i.get_attribute('onclick')).replace("melon.link.goSongDetail('", "")).replace("');","") #노래 id추출
+        get_id=((i.get_attribute('onclick')).replace("melon.link.goSongDetail('", "")).replace("');","") #get song id
         number.append(get_id)
 
     LYRIC = []
@@ -38,7 +38,7 @@ for y_i in year_list:
         driver.get("https://www.melon.com/song/detail.htm?songId=" + i)
         lyric = driver.find_element_by_class_name("wrap_lyric")
         lyric2text=lyric.text
-        LYRIC.append(lyric2text.replace("\n", " ")) # 줄 바꿈시 단어가 붙는 문제 해결
+        LYRIC.append(lyric2text.replace("\n", " "))
 
     Lyricist = ["" for _ in range(how_many)]
     df = pd.DataFrame({"title": title2, "lyric": LYRIC, "singer": singer2, "Lyricist": Lyricist})

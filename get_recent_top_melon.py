@@ -6,7 +6,7 @@ import pandas as pd
 driver = webdriver.Chrome('./chromedriver.exe')
 driver.get("https://www.melon.com/chart/index.htm")
 title=driver.find_elements_by_class_name('ellipsis.rank01')
-how_many=30 #몇 개의 곡 뽑을껀지
+how_many=30 #how many song to get
 
 title2=[]
 for i in title:
@@ -31,7 +31,7 @@ for i in number:
     driver.get("https://www.melon.com/song/detail.htm?songId=" + i)
     lyric=driver.find_element_by_class_name("lyric")
     lyric2text = lyric.text
-    LYRIC.append(lyric2text.replace("\n", " "))  # 줄 바꿈시 단어가 붙는 문제 해결
+    LYRIC.append(lyric2text.replace("\n", " "))
 
 year = "2021"
 Lyricist = ["" for _ in range(how_many)]
